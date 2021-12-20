@@ -1,7 +1,9 @@
-import Env from './src/config/config.default.js'
+import {APP_PORT} from './src/config/config.default.js'
 import app from './src/app/app_use.js'
 
-app.listen(Env.APP_PORT,()=>{
-    console.log(`server is running on http://localhost:${Env.APP_PORT }`)
+console.log(APP_PORT);
+
+app.listen(APP_PORT,()=>{
+    console.log(`server is running on http://localhost:${APP_PORT }`)
 })
 

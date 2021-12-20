@@ -1,12 +1,12 @@
 import Koa from 'koa'
 import koaBody from 'koa-body'
 
-import indexRouter from '../router/index.js'
+import userRouter from '../router/user.js'
 
 const app = new Koa()
 
 app.use(koaBody());
-app.use(indexRouter.routes())
+app.use(userRouter.routes())
 
 
 export default app

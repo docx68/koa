@@ -1,11 +1,17 @@
+//项目配置文件，使用dotenv读取配置
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-let Env  =  {
-    APP_PORT:process.env.APP_PORT
-};
+let APP_PORT  =  process.env.APP_PORT
 
-//console.log(process.env.APP_PORT)
+let DB_CONFIG = {
+    database:process.env.DB_NAME,
+    username:process.env.DB_USER,
+    password:process.env.DB_PWD,
+    host:process.env.DB_HOST,
+    dialect:process.env.DB_TYPE,
+    prefix:process.env.DB_PREFIX
+}
 
-export default Env
+export {APP_PORT,DB_CONFIG}

@@ -1,7 +1,7 @@
 //数据库连接，使用sequelize
 
 import Sequelize from 'sequelize';
-import { DB_CONFIG as db } from '../config/config.default.js';
+import { DB_CONFIG as db } from '../config/app.config.js';
 
 let db_prefix = db.prefix
 

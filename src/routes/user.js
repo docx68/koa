@@ -1,8 +1,10 @@
 import Router from 'koa-router';
 import UserController from '../controller/user.ctl.js';
+import UserMiddleware from '../middleware/user.mdw.js';
 
 
-const userRouter = new Router({prefix:'/'});
+const userRouter = new Router({prefix:'/user'});
+const userMiddleware = new UserMiddleware();
 
 //const routerFun = new IndexController();
 
@@ -12,6 +14,6 @@ const userRouter = new Router({prefix:'/'});
 const userController = new UserController()
 
 
-userRouter.post('/',userController.add)
+userRouter.post('/signin',userMiddleware.userValidator,userMiddleware.userVerify,userController.signin)
 
 export default userRouter

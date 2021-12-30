@@ -14,6 +14,15 @@ const userMiddleware = new UserMiddleware();
 const userController = new UserController()
 
 
-userRouter.post('/signin',userMiddleware.userValidator,userMiddleware.userVerify,userController.signin)
+userRouter.post('/signin',
+            userMiddleware.userValidator,
+            userMiddleware.userVerify,
+            userMiddleware.cryptoPassword,
+            userController.signin 
+        )
+
+userRouter.post('/login',
+    userController.login 
+)
 
 export default userRouter

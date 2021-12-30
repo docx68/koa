@@ -2,6 +2,8 @@ import {UserHandle} from "../model/user.mdl.js";
 import errorUser from "../config/error.user.js";
 
 class UserController {
+
+    //注册接口
     signin = async (ctx,next)=>{
         const {user_name,password,is_amdmin} = ctx.request.body;
         try {
@@ -21,7 +23,14 @@ class UserController {
             return
             
         }
-        
+    }
+
+    //登录接口
+           
+    login = async (ctx,next) => {
+        const {user_name,password} = ctx.request.body
+
+        ctx.body = `欢迎回来${user_name}`
     }
 }
 

@@ -1,5 +1,5 @@
 import { DataTypes, Model }  from 'sequelize'
-import { db_connect,db_prefix } from '../handle/db.js'
+import { db_connect,db_prefix } from '../common/db.js'
 
 class User extends Model{}
 
@@ -36,11 +36,13 @@ User.init(
 // await User.sync({ force: true });
 // console.log("用户模型表刚刚(重新)创建！");
 
-class UserHandle {
+class UserModel {
+    // 创建用户
     async createUser ({user_name,password,is_amdmin}) {
         const result = await User.create({user_name,password,is_amdmin})
         return result.dataValues
     }
+
     //读取用户操作
     async getUser ({id,user_name,is_amdmin}){
         let whereOption = {}
@@ -50,7 +52,7 @@ class UserHandle {
         is_amdmin && Object.assign(whereOption,{is_amdmin})
 
         const res = await User.findOne({
-            attributes:['id','user_name','is_admin'],
+            attributes:['id','user_name','password','is_admin'],
             where:whereOption
         })
         return res ? res.dataValues : null
@@ -59,4 +61,4 @@ class UserHandle {
 }
 
 
-export {User,UserHandle}
+export default UserModel;

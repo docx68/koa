@@ -1,5 +1,5 @@
 import {APP_PORT} from './src/config/app.config.js'
-import app from './src/handle/app.js'
+import app from './src/common/app.js'
 
 console.log(APP_PORT);
 

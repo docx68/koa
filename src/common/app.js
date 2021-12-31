@@ -2,7 +2,7 @@ import Koa from 'koa'
 import koaBody from 'koa-body'
 
 import userRouter from '../routes/user.js'
-import error from '../handle/err.js';
+import error from '../common/err.js';
 
 const app = new Koa()
 

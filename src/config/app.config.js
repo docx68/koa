@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 let APP_PORT  =  process.env.APP_PORT
+let jwt_secret = process.env.JWT_SECRET
 
 let DB_CONFIG = {
     database:process.env.DB_NAME,
@@ -14,4 +15,4 @@ let DB_CONFIG = {
     prefix:process.env.DB_PREFIX
 }
 
-export {APP_PORT,DB_CONFIG}
+export {APP_PORT,DB_CONFIG,jwt_secret}

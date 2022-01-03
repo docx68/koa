@@ -1,15 +1,12 @@
 import UserModel from "../model/user.model.js";
 import errorUser from "../config/error.user.js";
 import jwt from "../common/jwt.js";
-import jsonwebtoken from "jsonwebtoken";
-import {jwt_secret} from '../config/app.config.js'
-
-
 
 class UserController {
     
     // 初始化变量
     userModel = new UserModel();
+    jwt = new jwt();
 
     //注册接口
     signin = async (ctx,next)=>{
@@ -36,8 +33,7 @@ class UserController {
         const { id,user_name } = ctx.request.body;
         const { password, ...res } = await this.userModel.getUser({id,user_name})
 
-        let token = jwt(res)
-        console.log(token);
+        let token = this.jwt.jwtSign(res)
 
         ctx.body = {
             code:200,
@@ -50,14 +46,25 @@ class UserController {
 
     //修改用户信息
     change = async(ctx,next) => {
+        let id = ctx.state.user.id;
+        let password = ctx.request.body.password;
 
-
-        ctx.body = {
-            code:200,
-            message:`修改用户成功`
+        let updateUserRes = await this.userModel.updateUser({id,password})
+        
+        if (updateUserRes) {
+            ctx.body = {
+                code:200,
+                message:`修改成功`,
+                result:{
+                    'id':id
+                }
+            }
+        } else {
+            ctx.app.emit('error',errorUser.changeUserError,ctx);
         }
 
     }
+
 }
 
 export default UserController

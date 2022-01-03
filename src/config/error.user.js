@@ -42,5 +42,35 @@ export default {
             message:'密码错误',
             result:""
         }
+    },
+
+    // token 过期
+    tokenExpired:{
+        status:412,
+        body:{
+            code:10101,
+            message:'token过期了',
+            result:""
+        }
+    },
+
+    // 无效token
+    tokenError:{
+        status:413,
+        body:{
+            code:10102,
+            message:'token无效',
+            result:""
+        }
+    },
+
+    // 修改用户信息错误
+    changeUserError:{
+        status:414,
+        body:{
+            code:10202,
+            message:'修改用户信息错误',
+            result:""
+        }
     }
 }

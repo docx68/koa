@@ -2,7 +2,6 @@ import   UserModel  from "../model/user.model.js"
 const { createHmac } = await import('crypto');
 import errorLog from "../config/error.user.js"
 import bcrypt from "bcryptjs";
-import { userInfo } from "os";
 
 class UserMiddleware {
 

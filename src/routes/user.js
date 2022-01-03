@@ -1,10 +1,12 @@
 import Router from 'koa-router';
 import UserController from '../controller/user.controller.js';
 import UserMiddleware from '../middleware/user.middleware.js';
+import AuthMiddleware from '../middleware/auth.middleware.js';
 
 
 const userRouter = new Router({prefix:'/user'});
 const userMiddleware = new UserMiddleware();
+const authMiddleware = new AuthMiddleware();
 
 //const routerFun = new IndexController();
 
@@ -12,6 +14,7 @@ const userMiddleware = new UserMiddleware();
 
 //console.log(typeof indexController.register())
 const userController = new UserController()
+
 
 // 用户注册路由
 userRouter.post('/signin',
@@ -29,8 +32,9 @@ userRouter.post('/login',
 
 //修改用户信息
 userRouter.patch('/change',
-
-    userController.change 
+    authMiddleware.change,
+    userMiddleware.crpytpassword,
+    userController.change
 )
 
 

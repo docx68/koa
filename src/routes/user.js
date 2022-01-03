@@ -27,4 +27,11 @@ userRouter.post('/login',
     userController.login 
 )
 
+//修改用户信息
+userRouter.patch('/change',
+
+    userController.change 
+)
+
+
 export default userRouter

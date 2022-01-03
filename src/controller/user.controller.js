@@ -47,6 +47,17 @@ class UserController {
             }
         }
     }
+
+    //修改用户信息
+    change = async(ctx,next) => {
+
+
+        ctx.body = {
+            code:200,
+            message:`修改用户成功`
+        }
+
+    }
 }
 
 export default UserController

@@ -4,7 +4,7 @@ import UserMiddleware from '../middleware/user.middleware.js';
 import AuthMiddleware from '../middleware/auth.middleware.js';
 
 
-const userRouter = new Router({prefix:'/user'});
+const router = new Router({prefix:'/user'});
 const userMiddleware = new UserMiddleware();
 const authMiddleware = new AuthMiddleware();
 
@@ -17,25 +17,25 @@ const userController = new UserController()
 
 
 // 用户注册路由
-userRouter.post('/signin',
+router.post('/signin',
             userMiddleware.userValidator,
             userMiddleware.userVerify,
             userMiddleware.crpytpassword,
             userController.signin 
         )
 
-userRouter.post('/login',
+router.post('/login',
     userMiddleware.userValidator,
     userMiddleware.verifyLogin,
     userController.login 
 )
 
 //修改用户信息
-userRouter.patch('/change',
+router.patch('/change',
     authMiddleware.change,
     userMiddleware.crpytpassword,
     userController.change
 )
 
 
-export default userRouter
+export default router

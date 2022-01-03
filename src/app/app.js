@@ -1,15 +1,13 @@
 import Koa from 'koa'
 import koaBody from 'koa-body'
-
-import userRouter from '../routes/user.js'
+import router from '../routes/index.js';
 import error from '../common/err.js';
 
 const app = new Koa()
 
 app.use(koaBody());
-app.use(userRouter.routes())
+app.use(router.routes()).use(router.allowedMethods())
 app.on('error', error);
-
 
 export default app
 

@@ -32,7 +32,7 @@ router.post('/login',
 
 //修改用户信息
 router.patch('/change',
-    authMiddleware.change,
+    authMiddleware.auth,
     userMiddleware.crpytpassword,
     userController.change
 )

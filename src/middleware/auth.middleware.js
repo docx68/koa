@@ -4,8 +4,8 @@ import errorUser from '../config/error.user.js'
 
  class AuthMiddleware {
 
-    // 用户信息修改中间件
-    change = async (ctx,next) => {
+    // 验证用户登录状态
+    auth = async (ctx,next) => {
         const { authorization } = ctx.request.header
         let token = authorization;
 

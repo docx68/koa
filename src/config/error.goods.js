@@ -1,9 +1,9 @@
 export default {
-    userFormatErr:{
-        status:400,
+    uploadsError:{
+        status:401,
         body:{
-            code:10000,
-            message:'用户名或密码未输入',
+            code:10100,
+            message:'文件上传失败',
             result:""
         }
     }

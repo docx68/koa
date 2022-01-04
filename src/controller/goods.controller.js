@@ -5,6 +5,12 @@ class GoodsController {
     // 文件上传处理
     uploads = async (ctx,next) => {
         let file = ctx.request.files.file;
+        let fileType = ['image/jpeg','image/png'];
+        let condition = fileType.includes(file.type);
+        if (!condition) {
+            ctx.app.emit('error',errorGoods.unSupportedType,ctx);
+            return;
+        }
         if (file) {
             ctx.body = {
                 code:0,

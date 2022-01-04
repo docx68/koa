@@ -17,4 +17,3 @@ app.use(router.routes()).use(router.allowedMethods())
 app.on('error', error);
 
 export default app
-

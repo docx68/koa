@@ -72,5 +72,15 @@ export default {
             message:'修改用户信息错误',
             result:""
         }
+    },
+
+    // 没有权限
+    notAuth:{
+        status:415,
+        body:{
+            code:10203,
+            message:'没有权限',
+            result:""
+        }
     }
 }

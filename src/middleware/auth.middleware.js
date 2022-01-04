@@ -2,6 +2,7 @@ import jsonwebtoken from "jsonwebtoken";
 import {jwt_secret} from '../config/app.config.js'
 import errorUser from '../config/error.user.js'
 
+
  class AuthMiddleware {
 
     // 验证用户登录状态
@@ -29,6 +30,16 @@ import errorUser from '../config/error.user.js'
             return
         }
 
+        await next();
+    }
+
+    // 验证是否是管理员
+    isAdmin = async (ctx,next) => {
+        let {is_admin} = ctx.state.user;
+        if (is_admin == 0 ){
+            ctx.app.emit('error',errorUser.notAuth,ctx);
+            return
+        }
         await next();
     }
 

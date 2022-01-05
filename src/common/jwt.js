@@ -1,5 +1,5 @@
 import jsonwebtoken from "jsonwebtoken";
-import {jwt_secret} from '../config/app.config.js'
+import {jwt_secret} from '../app/config.js'
 
 class jwt {
     // 颁发令牌

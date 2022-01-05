@@ -1,5 +1,5 @@
 import path  from "path";
-import errorGoods from "../config/error.goods.js";
+import errorGoods from "../error/error.goods.js";
 
 class GoodsController {
     // 文件上传处理

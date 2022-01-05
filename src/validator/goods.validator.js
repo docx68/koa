@@ -1,5 +1,5 @@
 import Ajv from "ajv";
-import errorGoods from "../config/error.goods.js";
+import errorGoods from "../error/error.goods.js";
 
 const ajv = new Ajv();
 

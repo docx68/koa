@@ -2,7 +2,7 @@ import path  from 'path';
 import Koa from 'koa'
 import koaBody from 'koa-body'
 import router from '../routes/index.js';
-import error from '../common/err.js';
+import error from './err.js';
 import koasTatic from 'koa-static'
 
 const app = new Koa()

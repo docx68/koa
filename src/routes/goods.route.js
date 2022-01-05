@@ -17,10 +17,10 @@ router.post('/uploads',
 )
 
 router.post('/add',
-    authMiddleware.auth,
-    authMiddleware.isAdmin,
+    //authMiddleware.auth,
+    //authMiddleware.isAdmin,
     goodsValidator.validator,
-    goodsController.add
+    goodsController.create
 )
 
 export default router;

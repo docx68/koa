@@ -1,5 +1,5 @@
 import { DataTypes, Model }  from 'sequelize'
-import { db_connect,db_prefix } from './config.js'
+import { db_connect,db_prefix } from './connect.js'
 
 class User extends Model{}
 

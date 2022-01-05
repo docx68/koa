@@ -24,6 +24,16 @@ class GoodsController {
             return;
         }
     }
+
+    // 上传商品
+    add = async (ctx,next) => {
+        ctx.body = {
+            code:0,
+            message:'商品添加成功',
+            result:''
+        }
+    }
+
 }
 
 export default GoodsController;

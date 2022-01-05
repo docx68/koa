@@ -26,5 +26,14 @@ export default {
             message:'上传格式有误',
             result:""
         }
+    },
+    // 上传校验出错
+    createError:{
+        status:402,
+        body:{
+            code:101034,
+            message:'商品添加失败',
+            result:""
+        }
     }
 }

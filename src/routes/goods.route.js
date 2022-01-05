@@ -17,7 +17,8 @@ router.post('/uploads',
 )
 
 router.post('/add',
-
+    authMiddleware.auth,
+    authMiddleware.isAdmin,
     goodsValidator.validator,
     goodsController.add
 )

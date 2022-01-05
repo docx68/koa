@@ -16,5 +16,15 @@ export default {
             message:'不支持的文件格式',
             result:""
         }
+    },
+
+    // 上传校验出错
+    validateError:{
+        status:402,
+        body:{
+            code:10103,
+            message:'上传格式有误',
+            result:""
+        }
     }
 }

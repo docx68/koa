@@ -23,4 +23,12 @@ router.post('/add',
     goodsController.create
 )
 
+// 修改商品路由
+router.put('/update/:id',
+    //authMiddleware.auth,
+    //authMiddleware.isAdmin,
+    goodsValidator.validator,
+    goodsController.update
+)
+
 export default router;

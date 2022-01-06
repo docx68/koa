@@ -1,5 +1,5 @@
 import UserModel from "../model/user.model.js";
-import errorUser from "../error/error.user.js";
+import errorUser from "../error/user.error.js";
 import jwt from "../common/jwt.js";
 
 class UserController {

@@ -35,5 +35,15 @@ export default {
             message:'商品添加失败',
             result:""
         }
+    },
+
+    // 修改商品出错
+    updateError:{
+        status:402,
+        body:{
+            code:101035,
+            message:'商品修改失败',
+            result:""
+        }
     }
 }

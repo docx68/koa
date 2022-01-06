@@ -1,6 +1,6 @@
 import path  from "path";
 import GoodsModel from '../model/goods.model.js'
-import errorGoods from "../error/error.goods.js";
+import goodsError from "../error/goods.error.js";
 
 class GoodsController {
     // 实例化模型
@@ -12,7 +12,7 @@ class GoodsController {
         let fileType = ['image/jpeg','image/png'];
         let condition = fileType.includes(file.type);
         if (!condition) {
-            ctx.app.emit('error',errorGoods.unSupportedType,ctx);
+            ctx.app.emit('error',goodsError.unSupportedType,ctx);
             return;
         }
         if (file) {
@@ -24,7 +24,7 @@ class GoodsController {
                 }
             }
         } else {
-            ctx.app.emit('error',errorGoods.uploadsError,ctx);
+            ctx.app.emit('error',goodsError.uploadsError,ctx);
             return;
         }
     }
@@ -45,9 +45,30 @@ class GoodsController {
             }
         } catch(e){
             console.log(e)
-            ctx.app.emit('error',errorGoods.createError,ctx);
+            ctx.app.emit('error',goodsError.createError,ctx);
         }
         
+    }
+
+    // 修改商品
+    update = async (ctx) => {
+        try {
+            let id = ctx.request.params.id
+            let res = await this.goodsModel.update(id, ctx.request.body)
+            if (res){
+                ctx.response.body = {
+                    code:0,
+                    message:'商品修改成功',
+                    result:""
+                }
+            } else {
+                ctx.app.emit('error',goodsError.updateError,ctx);
+                return;
+            }
+
+        } catch(e) {
+            console.error(e)
+        }
     }
 
 }

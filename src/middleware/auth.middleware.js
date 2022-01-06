@@ -1,6 +1,6 @@
 import jsonwebtoken from "jsonwebtoken";
 import {jwt_secret} from '../app/config.js'
-import errorUser from '../error/error.user.js'
+import errorUser from '../error/user.error.js'
 
 
  class AuthMiddleware {

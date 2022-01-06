@@ -4,7 +4,7 @@ import AuthMiddleware from "../middleware/auth.middleware.js";
 import GoodsController from "../controller/goods.controller.js";
 import GoodsValidator from '../validator/goods.validator.js'
 
-const router = Router({prefix:'/goods'});
+const router = new Router({prefix:'/goods'});
 
 const authMiddleware =new AuthMiddleware();
 const goodsController = new GoodsController()

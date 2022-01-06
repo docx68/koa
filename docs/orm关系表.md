@@ -34,7 +34,8 @@ Goods.init(
         sequelize:db_connect, 
         modelName: 'Goods' ,
         tableName: `${db_prefix}goods`,
-
+		
+        // 启动软删除
         paranoid: true
     }
   )

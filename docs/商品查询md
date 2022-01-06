@@ -1,29 +1,36 @@
-import Goods from "../orm/goods.js";
+商品查询路由
 
-class GoodsModel {
-    async createGoods ({...goods}){
-        let res = await Goods.create(goods);
-        return res.dataValues;
+```js
+router.get('/find_all',
+    goodsController.findAll
+)
+```
+
+商品查询控制器
+
+```js
+    // 查找全部商品
+    findAll = async (ctx) => {
+        // let page_num 分页第几页
+        // let page_size 每页多少个
+        const { page_num = 1,page_size = 10 } = ctx.request.query
+        let res = await this.goodsModel.findAllGoods(page_num,page_size)
+
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:"查询成功",
+                result:res
+            }
+        } else {
+            ctx.response.body = "没有数据"
+        }
     }
+```
 
-    async update (id,body) {
-        let res = await Goods.update(body,{where:{id}})
-        //console.log(res);
-        return res[0]>0 ? 'true' : 'false'
-    }
+商品查询模型
 
-    // 单个商品删除功能实现
-    async remove (id) {
-        let res = await Goods.destroy({where:{id}})
-        return res ? true : false;
-    }
-
-    // 恢复商品
-    async restore (id) {
-        const res = await Goods.restore({where:{id}})
-        return res ? true : false
-    }
-
+```js
     // 查询全部商品
     async findAllGoods(page_num,page_size) {
         // 统计条目
@@ -46,6 +53,5 @@ class GoodsModel {
             return false
         }
     }
-}
+```
 
-export default GoodsModel;

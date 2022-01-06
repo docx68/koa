@@ -110,6 +110,23 @@ class GoodsController {
         }
     }
 
+    // 查找全部商品
+    findAll = async (ctx) => {
+        // let page_num 分页第几页
+        // let page_size 每页多少个
+        const { page_num = 1,page_size = 10 } = ctx.request.query
+        let res = await this.goodsModel.findAllGoods(page_num,page_size)
+
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:"查询成功",
+                result:res
+            }
+        } else {
+            ctx.response.body = "没有数据"
+        }
+    }
 }
 
 export default GoodsController;

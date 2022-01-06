@@ -45,6 +45,8 @@ router.post('/retore/:id',
     goodsController.restore
 )
 
-
+router.get('/find_all',
+    goodsController.findAll
+)
 
 export default router;

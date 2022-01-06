@@ -31,4 +31,13 @@ router.put('/update/:id',
     goodsController.update
 )
 
+// 删除商品api
+router.delete('/remove/:id',
+    //authMiddleware.auth,
+    //authMiddleware.isAdmin,
+    goodsController.remove
+)
+
+
+
 export default router;

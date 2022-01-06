@@ -45,5 +45,14 @@ export default {
             message:'商品修改失败',
             result:""
         }
+    },
+    // 删除商品出错
+    removeError:{
+        status:402,
+        body:{
+            code:101036,
+            message:'删除商品失败',
+            result:""
+        }
     }
 }

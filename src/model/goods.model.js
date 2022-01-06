@@ -11,6 +11,12 @@ class GoodsModel {
         //console.log(res);
         return res[0]>0 ? 'true' : 'false'
     }
+
+    // 单个商品删除功能实现
+    async remove (id) {
+        let res = await Goods.destroy({where:{id}})
+        return res ? true : false;
+    }
 }
 
 export default GoodsModel;

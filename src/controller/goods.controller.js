@@ -71,6 +71,26 @@ class GoodsController {
         }
     }
 
+    // 删除商品
+    remove = async (ctx) => {
+        try {
+            let id = ctx.request.params.id;
+            let res = await this.goodsModel.remove(id)
+            if (res) {
+                ctx.response.body = {
+                    code:0 ,
+                    message:'删除商品成功',
+                    result:''
+                }
+            }else {
+                ctx.app.emit('error',goodsError.removeError,ctx);
+            }
+
+        } catch(e){
+            console.error(e);
+        }
+    }
+
 }
 
 export default GoodsController;

@@ -54,5 +54,15 @@ export default {
             message:'删除商品失败',
             result:""
         }
+    },
+
+    // 恢复删除出错
+    restore:{
+        status:402,
+        body :{
+            code:402,
+            message:"恢复删除商品错误",
+            result:""
+        }
     }
 }

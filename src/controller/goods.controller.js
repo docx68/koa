@@ -91,6 +91,25 @@ class GoodsController {
         }
     }
 
+    // 恢复删除商品
+    restore = async (ctx) => {
+        try {
+            const id = ctx.request.params.id;
+            let res = await this.goodsModel.restore(id)
+            if (res) {
+                ctx.response.body = {
+                    code:0,
+                    message:"恢复删除成功",
+                    result:""
+                }
+            } else {
+                ctx.app.emit('error',goodsError.restore,ctx);
+            }
+        } catch(e){
+
+        }
+    }
+
 }
 
 export default GoodsController;

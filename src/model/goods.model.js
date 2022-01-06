@@ -17,6 +17,12 @@ class GoodsModel {
         let res = await Goods.destroy({where:{id}})
         return res ? true : false;
     }
+
+    // 恢复商品
+    async restore (id) {
+        const res = await Goods.restore({where:{id}})
+        return res ? true : false
+    }
 }
 
 export default GoodsModel;

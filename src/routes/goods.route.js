@@ -38,6 +38,13 @@ router.delete('/remove/:id',
     goodsController.remove
 )
 
+// 恢复删除商品api
+router.post('/retore/:id',
+    //authMiddleware.auth,
+    //authMiddleware.isAdmin,
+    goodsController.restore
+)
+
 
 
 export default router;

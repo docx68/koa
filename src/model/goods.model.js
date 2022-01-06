@@ -1,4 +1,4 @@
-import Goods from "../db/goods.js";
+import Goods from "../orm/goods.js";
 
 class GoodsModel {
     async createGoods ({...goods}){

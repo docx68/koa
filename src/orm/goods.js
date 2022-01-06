@@ -32,11 +32,13 @@ Goods.init(
     {
         sequelize:db_connect, 
         modelName: 'Goods' ,
-        tableName: `${db_prefix}goods`
+        tableName: `${db_prefix}goods`,
+
+        paranoid: true
     }
   )
 
 // 创建数据库 如果有数据库则不创建
-// await Goods.sync();
+//await Goods.sync();
 
 export default Goods;

@@ -2,13 +2,13 @@ import Router from "koa-router";
 
 import AuthMiddleware from "../middleware/auth.middleware.js";
 import GoodsController from "../controller/goods.controller.js";
-import GoodsValidator from '../validator/goods.validator.js'
+import AjvValidator from "../utils/ajv.js";
 
 const router = new Router({prefix:'/goods'});
 
 const authMiddleware =new AuthMiddleware();
 const goodsController = new GoodsController()
-const goodsValidator = new GoodsValidator();
+const ajvValidator = new AjvValidator();
 
 router.post('/uploads',
     authMiddleware.auth,
@@ -19,7 +19,16 @@ router.post('/uploads',
 router.post('/add',
     //authMiddleware.auth,
     //authMiddleware.isAdmin,
-    goodsValidator.validator,
+    //goodsValidator.validator,
+    ajvValidator.verify({    
+        properties: {
+            goods_name: {type: "string"},
+            goods_price: {type: "number"},
+            goods_num: {type: "number"},
+            goods_img: {type: "string"}
+        },
+        required: ["goods_name","goods_price","goods_num"]
+    }),
     goodsController.create
 )
 
@@ -27,7 +36,17 @@ router.post('/add',
 router.put('/update/:id',
     //authMiddleware.auth,
     //authMiddleware.isAdmin,
-    goodsValidator.validator,
+    ajvValidator.verify(
+        {
+            properties: {
+                goods_name: {type: "string"},
+                goods_price: {type: "number"},
+                goods_num: {type: "number"},
+                goods_img: {type: "string"}
+            },
+            required: ["goods_name","goods_price","goods_num"]
+        }
+    ),
     goodsController.update
 )
 

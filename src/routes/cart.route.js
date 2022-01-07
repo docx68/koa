@@ -2,21 +2,21 @@
 import Router from "koa-router";
 
 import AuthMiddleware from '../middleware/auth.middleware.js'
-import CartValidator from "../validator/cart.validator.js";
+import AjvValidator from "../utils/ajv.js";
 import CartController from "../controller/cart.controller.js";
 
 // 实例化路由
 const router = new Router({prefix:"/cart"})
 // 实例化引入对象
 const authMiddleware = new AuthMiddleware();
-const cartValidator = new CartValidator()
+const ajvValidator = new AjvValidator()
 const cartController = new CartController()
 
 // 编写路由规则
 // 添加购物车
 router.post('/add',
     //authMiddleware.auth,
-    cartValidator.verify({
+    ajvValidator.verify({
         properties: {
             goods_id: {type: "number"} 
         },
@@ -35,7 +35,7 @@ router.get('/find_all',
 // 更新购物车
 router.patch('/update/:id',
     //authMiddleware.auth,
-    cartValidator.verify({
+    ajvValidator.verify({
         properties: {
             number: { type: "number" } ,
             selected: { type: 'boolean' }
@@ -53,7 +53,7 @@ router.post('/selected_all',
 // 购物车删除接口
 router.post('/delete',
     //authMiddleware.auth,
-    cartValidator.verify({
+    ajvValidator.verify({
         properties:{
             ids:{type:"array"}
         }

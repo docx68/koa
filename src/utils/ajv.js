@@ -1,9 +1,9 @@
 import Ajv from "ajv";
-import cartError from "../error/cart.error.js";
+import ajvError from "../error/ajv.error.js";
 
 const ajv = new Ajv();
 
-class CartValidator {
+class AjvValidator {
     verify = (rules) => {
         return async (ctx,next) => {
             let data = ctx.request.body
@@ -22,8 +22,8 @@ class CartValidator {
             const validate = ajv.compile(schema)
             const valid = validate(data)
             if (!valid) {
-                cartError.validator.body.result = validate.errors[0].message
-                ctx.app.emit('error', cartError.validator,ctx)
+                ajvError.validator.body.result = validate.errors[0].message
+                ctx.app.emit('error', ajvError.validator,ctx)
                 return
             }
     
@@ -32,4 +32,4 @@ class CartValidator {
     }
 }
 
-export default CartValidator;
+export default AjvValidator;

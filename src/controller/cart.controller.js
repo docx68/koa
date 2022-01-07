@@ -94,6 +94,28 @@ class CartController {
         }
         console.log(1)
     }
+
+    // 删除购物车
+    remove = async (ctx) => {
+        const {ids} = ctx.request.body
+        console.log(ctx.request.body)
+        let res = await this.cartModel.removeCart(ids);
+
+        if(res) {
+            ctx.response.body = {
+                    code: 0,
+                    message: '删除购物车成功',
+                    result: res
+            }
+        } else {
+            ctx.response.body = {
+                code: 0,
+                message: '无数据',
+                result: res
+            }
+        }
+
+    }
 }
 
 export default CartController;

@@ -100,6 +100,19 @@ class CartModel {
 
     }
 
+    // 删除购物车
+    async removeCart (ids) {
+        const rows = Cart.destroy({
+            where:{
+                id:{
+                    [Op.in]: ids
+                }
+            }
+        })
+
+        return rows 
+    }
+
 }
 
 export default CartModel;

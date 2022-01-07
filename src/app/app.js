@@ -10,8 +10,8 @@ const app = new Koa()
 app.use(koaBody({
     multipart:true,
     formidable:{
-        uploadDir:path.join('.',"src/uploads/"),
-        keepExtensions:true 
+        uploadDir:path.join('.',"src/assets/uploads/"),
+        keepExtensions:true
     }
 }));
 

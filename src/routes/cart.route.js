@@ -15,7 +15,7 @@ const cartController = new CartController()
 // 编写路由规则
 // 添加购物车
 router.post('/add',
-    authMiddleware.auth,
+    //authMiddleware.auth,
     cartValidator.verify({
         properties: {
             goods_id: {type: "number"} 
@@ -44,10 +44,21 @@ router.patch('/update/:id',
     cartController.update
 )
 
+// 购物车全选和全不选功能
 router.post('/selected_all',
    authMiddleware.auth,
    cartController.selectedAll 
 )
 
+// 购物车删除接口
+router.post('/delete',
+    //authMiddleware.auth,
+    cartValidator.verify({
+        properties:{
+            ids:{type:"array"}
+        }
+    }),
+    cartController.remove
+)
 // 导出路由
 export default router

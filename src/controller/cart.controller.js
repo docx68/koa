@@ -73,6 +73,27 @@ class CartController {
             ctx.app.emit('error',cartError.updateCart,ctx)
         }
     }
+
+    // 购物车全部选中和取消
+    selectedAll = async (ctx) => {
+        const user_id = ctx.state.user.id
+        const {selected_all} = ctx.request.body
+        let res = await this.cartModel.selectedAll(user_id,selected_all)
+        if (res == 1 ){
+            ctx.response.body = {
+                code : 0,
+                message:'全选了',
+                result:''
+            } 
+        }else {
+            ctx.response.body = {
+                code : 0,
+                message:'取消全选了',
+                result:''
+            }   
+        }
+        console.log(1)
+    }
 }
 
 export default CartController;

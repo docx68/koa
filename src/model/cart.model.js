@@ -1,4 +1,4 @@
-import { Op } from "sequelize";
+import { Op, where } from "sequelize";
 import Cart from "./entity/cart.js";
 import Goods from './entity/goods.js'
 
@@ -73,6 +73,31 @@ class CartModel {
         let res = await row.save();
         // 返回数据
         return res;
+    }
+
+    // 购物车全部选中和取消
+    async selectedAll(user_id,selected_all) {
+        if (selected_all) {
+            await Cart.update(
+                {selected:true },
+                {
+                    where:{
+                        user_id:user_id
+                    }
+                }
+            )
+            return 1 // 全选
+        } else {
+            await Cart.update(
+                {selected:false},
+                {where:{
+                    user_id:user_id
+                    }
+                }
+            )
+            return 0 // 全不选
+        }
+
     }
 
 }

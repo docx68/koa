@@ -81,6 +81,16 @@ class UserMiddleware {
         await next();
     }
 
+    // 验证是否是管理员
+    isAdmin = async (ctx,next) => {
+        let {is_admin} = ctx.state.user;
+        if (is_admin == 0 ){
+            ctx.app.emit('error',errorUser.notAuth,ctx);
+            return
+        }
+        await next();
+    }
+
 }
 
 export default UserMiddleware;

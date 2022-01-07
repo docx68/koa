@@ -44,5 +44,10 @@ router.patch('/update/:id',
     cartController.update
 )
 
+router.post('/selected_all',
+   authMiddleware.auth,
+   cartController.selectedAll 
+)
+
 // 导出路由
 export default router

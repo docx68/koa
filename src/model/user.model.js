@@ -1,4 +1,4 @@
-import User from "../orm/user.js"
+import User from "./entity/user.js"
 
 class UserModel {
     // 创建用户

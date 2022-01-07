@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
-import { db_connect,db_prefix} from '../common/db_connect.js'
+import { db_connect,db_prefix} from '../../common/db_connect.js'
+import Goods from "./goods.js";
 
 class Cart extends Model{}
 
@@ -38,6 +39,11 @@ Cart.init(
     }
 
 )
+
+Cart.belongsTo(Goods,{
+    foreignKey:'goods_id',
+    as:'goods_info'
+})
 
 // Cart.sync();
 

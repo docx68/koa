@@ -1,5 +1,6 @@
-import Cart from "../orm/cart.js";
 import { Op } from "sequelize";
+import Cart from "./entity/cart.js";
+import Goods from './entity/goods.js'
 
 class CartModel {
     async addCart(user_id,goods_id){
@@ -26,6 +27,38 @@ class CartModel {
             })
             return 1
         }
+    }
+
+    // 分页查询
+    async findAllCart(page_num,page_size){
+        // 统计条目
+        let count =await Cart.count()
+         // 刚印好的页面 转印下一页的位置
+        const offset = ( page_num - 1 ) * page_size ; 
+        // 每页多少
+        let size = parseInt(page_size)
+
+        let rows = await Cart.findAll({
+            attributes:['id','number','selected'],
+            offset:offset,
+            limit:size,
+            include:{
+                model:Goods,
+                as:'goods_info',
+                attributes:['id', 'goods_name', 'goods_price', 'goods_img']
+            }
+        })
+
+        console.log(rows);
+
+        return {
+            pageNum:page_num,
+            pageSize:page_size,
+            total: count,
+            list: rows,
+        }
+
+
     }
 
 }

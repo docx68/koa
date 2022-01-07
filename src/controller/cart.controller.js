@@ -30,6 +30,26 @@ class CartController {
             return
         }
     }
+
+    findAll = async (ctx) => {
+        // 进行分页查询
+        const { page_num = 1,page_size = 10 } = ctx.request.query
+        let res = await this.cartModel.findAllCart(page_num,page_size)
+
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:"查询成功",
+                result:res
+            }
+        } else {
+            ctx.response.body = {
+                code:401,
+                message:"没有数据",
+                result:""
+            }
+        }
+    }
 }
 
 export default CartController;

@@ -13,11 +13,18 @@ const cartValidator = new CartValidator()
 const cartController = new CartController()
 
 // 编写路由规则
+// 添加购物车
 router.post('/add',
     authMiddleware.auth,
     cartValidator.verify,
     cartController.add
 
+)
+
+// 查询购物车
+router.get('/find_all',
+    //authMiddleware.auth,
+    cartController.findAll
 )
 
 // 导出路由

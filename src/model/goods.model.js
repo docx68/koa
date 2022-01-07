@@ -1,6 +1,6 @@
-import Goods from "../orm/goods.js";
+import Goods from "./entity/goods.js";
 
-class GoodsModel {
+class GoodsModel extends Goods {
     async createGoods ({...goods}){
         let res = await Goods.create(goods);
         return res.dataValues;

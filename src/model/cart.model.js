@@ -49,16 +49,30 @@ class CartModel {
             }
         })
 
-        console.log(rows);
-
         return {
             pageNum:page_num,
             pageSize:page_size,
             total: count,
             list: rows,
         }
+    }
 
+    // 更新购物车
+    async updateCart(params) {
+        // 解构变量
+        const {id,number,selected} = params;
 
+        // 查找数据
+        let row = await Cart.findByPk(id)
+        if (!row) {
+            return 0
+        } 
+        // 赋值并修改
+        number !== undefined ? row.number = number : ''
+        selected !== undefined ? row.selected = selected : ''
+        let res = await row.save();
+        // 返回数据
+        return res;
     }
 
 }

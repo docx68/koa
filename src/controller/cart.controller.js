@@ -50,6 +50,29 @@ class CartController {
             }
         }
     }
+
+    // 更新购物车
+    update = async (ctx) => {
+        const { id } = ctx.request.params
+        const { number , selected } = ctx.request.body
+
+        if (number == undefined && selected == undefined) {
+            cartError.updateCart.result = '无更新数据'
+            ctx.app.emit(error,cartError.updateCart,ctx);
+        }
+        console.log(id)
+        let res = await this.cartModel.updateCart({id,number,selected})
+        if (res !== 0) {
+            ctx.response.body = {
+                code : 0,
+                message: '更新购物车成功',
+                result:res
+            }
+        } else {
+            cartError.updateCart.result = '无更新'
+            ctx.app.emit('error',cartError.updateCart,ctx)
+        }
+    }
 }
 
 export default CartController;

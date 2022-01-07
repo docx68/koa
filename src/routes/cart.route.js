@@ -16,7 +16,12 @@ const cartController = new CartController()
 // 添加购物车
 router.post('/add',
     authMiddleware.auth,
-    cartValidator.verify,
+    cartValidator.verify({
+        properties: {
+            goods_id: {type: "number"} 
+        },
+        required: ["goods_id"]
+    }),
     cartController.add
 
 )
@@ -25,6 +30,18 @@ router.post('/add',
 router.get('/find_all',
     //authMiddleware.auth,
     cartController.findAll
+)
+
+// 更新购物车
+router.patch('/update/:id',
+    //authMiddleware.auth,
+    cartValidator.verify({
+        properties: {
+            number: { type: "number" } ,
+            selected: { type: 'boolean' }
+        }
+    }),
+    cartController.update
 )
 
 // 导出路由

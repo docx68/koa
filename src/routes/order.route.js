@@ -14,6 +14,7 @@ const jwt = new JWT();
 // 实例化路由
 const router = new Router({prefix:"/order"})
 
+// 提交订单
 router.post("/create",
     jwt.verify,
     ajv.verify({
@@ -24,6 +25,23 @@ router.post("/create",
         }
     }),
     orderController.create
+)
+
+// 获取订单
+router.get("/find",
+    //jwt.verify,
+    orderController.find
+)
+
+// 更新订单
+router.patch("/update/:id",
+    //jwt.verify,
+    ajv.verify({
+        properties: {
+            status: {type: "number"}
+        }
+    }),
+    orderController.update
 )
 
 export default router

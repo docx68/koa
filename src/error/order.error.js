@@ -7,4 +7,13 @@ export default {
             result:""
         }
     },
+
+    update:{
+        status:401,
+        body:{
+            code:10101,
+            message:'更新订单失败，服务错误',
+            result:""
+        }
+    },
 }

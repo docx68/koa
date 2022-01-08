@@ -35,6 +35,21 @@ class AddrController {
             ctx.app.emit('error',addrError.find,ctx)
         }
     }
+
+    // 更新地址
+    update = async (ctx) => {
+        const { id } = ctx.request.params
+        let res = await this.addrModel.updateAddr(id,ctx.request.body)
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:"更新成功",
+                result:res
+            }
+        } else {
+            ctx.app.emit('error',addrError.update,ctx)
+        }
+    }
 }
 
 export default AddrController;

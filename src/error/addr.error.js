@@ -15,5 +15,16 @@ export default {
             message:"未查询到地址",
             result:""
         }
+    },
+
+    // 更新失败
+    update:{
+        status:401,
+        body:{
+            code:10103,
+            message:"数据未更新，请检查id等信息",
+            result:""
+        }
     }
+
 }

@@ -16,7 +16,7 @@ router.post('/create',
     ajv.verify({
         properties:{
             consignee:{type:"string", nullable: true},
-            phone:{type:"string",pattern: "/^1\d{10}$/" },
+            phone:{type:"integer",pattern: "/^1\d{10}$/" },
             address:{type:"string"}
         },
         required: ["consignee","phone","address"]
@@ -28,6 +28,20 @@ router.post('/create',
 router.get('/find_all',
     jwt.verify,
     addrController.findAll
+)
+
+// 更新地址
+router.put('/update/:id',
+    jwt.verify,
+    ajv.verify({
+        properties:{
+            consignee:{type:"string", nullable: true},
+            phone:{type:"integer",pattern: "/^1\d{10}$/" },
+            address:{type:"string"}
+        },
+        required: ["consignee","phone","address"]
+    }),
+    addrController.update
 )
 
 export default router

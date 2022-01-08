@@ -34,6 +34,21 @@ class AddrModel {
             console.log(e)
         }
     }
+
+    // 更新模型
+    async updateAddr(id,data) {
+        try{
+            let row = await Addr.update(data,{where:{id}})
+            console.log(row)
+            if (row.length !== 0 && row[0] !== 0 ) {
+                return row
+            } else {
+                return false
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
 }
 
 

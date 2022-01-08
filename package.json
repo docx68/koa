@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "ajv": "^8.8.2",
+    "ajv-i18n": "^4.2.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "dotenv": "^10.0.0",

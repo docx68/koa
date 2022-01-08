@@ -2,7 +2,7 @@ import jsonwebtoken from "jsonwebtoken";
 import {jwt_secret} from '../app/config.js'
 import errorUser from '../error/user.error.js'
 
-class jwt {
+class JWT {
     // 颁发令牌
     jwtSign = ({...param}) => {
         try {
@@ -45,5 +45,5 @@ class jwt {
 
 
 
-export default jwt;
+export default JWT;
 

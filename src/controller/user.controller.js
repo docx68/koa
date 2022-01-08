@@ -1,12 +1,12 @@
 import UserModel from "../model/user.model.js";
 import errorUser from "../error/user.error.js";
-import jwt from "../utils/jwt.js";
+import JWT from "../utils/jwt.js";
 
 class UserController {
     
     // 初始化变量
     userModel = new UserModel();
-    jwt = new jwt();
+    jwt = new JWT();
 
     //注册接口
     signin = async (ctx,next)=>{

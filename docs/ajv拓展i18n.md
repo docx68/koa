@@ -1,3 +1,12 @@
+安装
+
+```text
+npm install ajv-i18n
+```
+
+封装
+
+```js
 import Ajv from "ajv";
 import ajvError from "../error/ajv.error.js";
 // 引入
@@ -37,3 +46,5 @@ class AjvValidator {
 }
 
 export default AjvValidator;
+```
+

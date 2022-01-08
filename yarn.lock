@@ -146,7 +146,12 @@
   dependencies:
     "debug" "4"
 
-"ajv@^8.8.2":
+"ajv-i18n@^4.2.0":
+  "integrity" "sha512-v/ei2UkCEeuKNXh8RToiFsUclmU+G57LO1Oo22OagNMENIw+Yb8eMwvHu7Vn9fmkjJyv6XclhJ8TbuigSglPkg=="
+  "resolved" "https://registry.npmjs.org/ajv-i18n/-/ajv-i18n-4.2.0.tgz"
+  "version" "4.2.0"
+
+"ajv@^8.0.0-beta.0", "ajv@^8.8.2":
   "integrity" "sha512-x9VuX+R/jcFj1DHo/fCp99esgGDWiHENrKxaCENuCxpoMCmAt/COCGVDwA7kleEpEzJjDnvh3yGoOuLu0Dtllw=="
   "resolved" "https://registry.npmjs.org/ajv/-/ajv-8.8.2.tgz"
   "version" "8.8.2"

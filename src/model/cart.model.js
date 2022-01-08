@@ -1,4 +1,4 @@
-import { Op, where } from "sequelize";
+import { Op } from "sequelize";
 import Cart from "./entity/cart.js";
 import Goods from './entity/goods.js'
 

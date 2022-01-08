@@ -32,7 +32,6 @@ class UserMiddleware {
     }
 
     //对用户密码进行加密
-
     cryptoPassword = async(ctx,next) => {
         const { password } = ctx.request.body;
         const secret = 'zhangdefang';

@@ -26,7 +26,7 @@ class AjvValidator {
             if (!valid) {
                 // 使用汉语
                 localize.zh(validate.errors)
-                ajvError.validator.body.result = validate.errors[0].message
+                ajvError.validator.body.result = validate.errors
                 ctx.app.emit('error', ajvError.validator,ctx)
                 return
             }

@@ -44,4 +44,16 @@ router.put('/update/:id',
     addrController.update
 )
 
+// 是否默认地址
+router.patch('/is_default',
+    jwt.verify,
+    addrController.setDefault
+)
+
+// 删除地址
+router.delete('/delete/:id',
+    jwt.verify,
+    addrController.delete
+)
+
 export default router

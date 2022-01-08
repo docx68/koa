@@ -1,4 +1,4 @@
-import { Op } from "sequelize";
+import { Op, where } from "sequelize";
 import Addr from './entity/addr.js'
 
 class AddrModel {
@@ -47,6 +47,39 @@ class AddrModel {
             }
         } catch (e) {
             console.log(e)
+        }
+    }
+
+    // 是否默认地址
+    async setDefaultAddr(user_id,id) {
+        await Addr.update(
+            {is_default:false},
+            {where:{
+                user_id:user_id
+            }}
+        )
+        let row = await Addr.update(
+            {is_default:true},
+            {where:{
+                [Op.and]:[{user_id},{id}]
+            }}
+        )
+
+        if (row.length !== 0 && row[0] !== 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    // 删除接口
+    async removeAddr (id) {
+        let row = await Addr.destroy({where:{id}})
+        console.log(row)
+        if ( row ) {
+            return true
+        } else {
+            return false
         }
     }
 }

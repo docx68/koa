@@ -25,6 +25,25 @@ export default {
             message:"数据未更新，请检查id等信息",
             result:""
         }
-    }
+    },
 
+    // 设置默认失败
+    is_default:{
+        status:401,
+        body:{
+            code:10104,
+            message:"设置默认失败，请检查数据",
+            result:""
+        }
+    },
+
+    // 设置默认失败
+    delete:{
+        status:401,
+        body:{
+            code:10104,
+            message:"删除地址失败，请检查数据",
+            result:""
+        }
+    }
 }

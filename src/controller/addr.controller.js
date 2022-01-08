@@ -50,6 +50,38 @@ class AddrController {
             ctx.app.emit('error',addrError.update,ctx)
         }
     }
+
+    // 是否默认地址
+    setDefault = async (ctx) => {
+        const user_id = ctx.state.user.id
+        const id = ctx.request.query.id
+        let res = await this.addrModel.setDefaultAddr(user_id,id)
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:"设置默认成功",
+                result:""
+            }
+        } else {
+            ctx.app.emit("error",addrError.is_default,ctx)
+        }
+    }
+
+    // 删除地址
+    delete = async (ctx) => {
+        let id = ctx.request.params.id
+        let res = await this.addrModel.removeAddr(id)
+        console.log(res)
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:"删除成功",
+                result:""
+            }
+        } else {
+            ctx.app.emit("error",addrError.delete,ctx)
+        }
+    }
 }
 
 export default AddrController;

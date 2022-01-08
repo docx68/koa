@@ -20,6 +20,21 @@ class AddrController {
             ctx.app.emit('error',addrError.addAddr,ctx)
         }
     }
+
+    // 查询控制器
+    findAll = async (ctx) => {
+        const user_id = ctx.state.user.id
+        let res = await this.addrModel.findAllAddr(user_id);
+        if (res) {
+            ctx.response.body = {
+                code:0,
+                message:'查询成功',
+                result:res
+            }
+        } else {
+            ctx.app.emit('error',addrError.find,ctx)
+        }
+    }
 }
 
 export default AddrController;

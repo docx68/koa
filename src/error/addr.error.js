@@ -7,4 +7,13 @@ export default {
             result:""
         }
     },
+
+    find:{
+        status:401,
+        body:{
+            code:10102,
+            message:"未查询到地址",
+            result:""
+        }
+    }
 }

@@ -24,4 +24,10 @@ router.post('/create',
     addrController.create
 )
 
+// 查询地址
+router.get('/find_all',
+    jwt.verify,
+    addrController.findAll
+)
+
 export default router

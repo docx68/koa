@@ -24,6 +24,7 @@ router.post('/signin',
             userController.signin 
         )
 
+// 用户登录路由
 router.post('/login',
     userMiddleware.userValidator,
     userMiddleware.verifyLogin,

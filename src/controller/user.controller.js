@@ -1,12 +1,15 @@
 import UserModel from "../model/user.model.js";
 import errorUser from "../error/user.error.js";
-import JWT from "../utils/jwt.js";
+//import JWT from "../utils/jwt.js";
+import joseJwt from "../utils/jose.js";
 
 class UserController {
     
     // 初始化变量
     userModel = new UserModel();
-    jwt = new JWT();
+    //jwt = new JWT();
+    jwt = new joseJwt()
+    
 
     //注册接口
     signin = async (ctx,next)=>{
@@ -33,7 +36,7 @@ class UserController {
         const { id,user_name } = ctx.request.body;
         const { password, ...res } = await this.userModel.getUser({id,user_name})
 
-        let token = this.jwt.jwtSign(res)
+        let token = await this.jwt.JWTSign(res)
 
         ctx.body = {
             code:200,

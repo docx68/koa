@@ -1,4 +1,4 @@
-import {APP_PORT} from './src/app/config.js'
+import {APP_PORT} from './src/config/config.js'
 import app from './src/app.js'
 
 console.log(APP_PORT);

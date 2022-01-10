@@ -1,8 +1,8 @@
 import path  from 'path';
 import Koa from 'koa'
 import koaBody from 'koa-body'
-import router from '../routes/index.js';
-import error from './err.js';
+import router from './routes/index.js';
+import error from './config/err.js';
 import koasTatic from 'koa-static'
 
 const app = new Koa()

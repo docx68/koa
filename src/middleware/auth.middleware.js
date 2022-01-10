@@ -1,5 +1,5 @@
 import jsonwebtoken from "jsonwebtoken";
-import {jwt_secret} from '../app/config.js'
+import {jwt_secret} from '../config/config.js'
 import errorUser from '../error/user.error.js'
 
 

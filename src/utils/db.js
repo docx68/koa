@@ -2,7 +2,7 @@
 import Sequelize from 'sequelize';
 
 // 导入数据库配置文件
-import { DB_CONFIG as db } from '../app/config.js';
+import { DB_CONFIG as db } from '../config/config.js';
 let db_prefix = db.prefix
 
 // 传递参数实例化连接
